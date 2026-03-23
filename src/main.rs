@@ -12,6 +12,10 @@ fn main() {
         let command = buf.trim();
         match command {
             "exit" => break,
+            _ if command.starts_with("echo") => {
+                let to_echo = command[4..].trim();
+                println!("{to_echo}")
+            }
             _ => println!("{}: command not found", command),
         }
         io::stdout().flush().unwrap();
